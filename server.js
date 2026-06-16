@@ -14,6 +14,10 @@ app.get('/api/status', (req, res) => {
     res.json({ message: 'API CRM Osmose Digital fonctionnelle 🚀' });
 });
 
+// Branchement routes d'authentification
+const authRoutes = require('./routes/authRoutes');
+app.use('/api/auth', authRoutes);
+
 // Port du serveur
 const PORT = process.env.PORT || 5000;
 
