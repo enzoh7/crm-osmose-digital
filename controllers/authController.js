@@ -11,11 +11,11 @@ const register = async (req, res) => {
         }
 
         const saltRounds = 10;
-        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        const hashPassword = await bcrypt.hash(password, saltRounds);
 
-        const [result] = await pool.query(
-            'INSERT INTO users (email, hash_password, role) VALUES (?, ?, ?)',
-            [email, hashedPassword, 'commercial']
+        const [result] = await pool.execute(
+            'INSERT INTO users (email, password_hash, role) VALUES (?, ?, ?)',
+            [email, hashPassword, 'commercial']
         );
 
         res.status(201).json({ 
@@ -50,7 +50,7 @@ const login = async (req, res) => {
         }
 
         const user = users[0];
-        const isPasswordValid = await bcrypt.compare(password, user.hash_password);
+        const isPasswordValid = await bcrypt.compare(password, user.password_hash);
 
         if (!isPasswordValid) {
             return res.status(401).json({ message: 'Identifiants invalides.' });
