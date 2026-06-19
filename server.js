@@ -22,6 +22,10 @@ app.use('/api/auth', authRoutes);
 const entreprisesRoutes = require('./routes/entreprisesRoutes');
 app.use('/api/entreprises', entreprisesRoutes);
 
+// Branchement routes des interactions
+const interactionsRoutes = require('./routes/interactionsRoutes');
+app.use('/api/interactions', interactionsRoutes);
+
 // Port du serveur
 const PORT = process.env.PORT || 5000;
 
