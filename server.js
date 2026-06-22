@@ -1,9 +1,19 @@
 const express = require('express');
 const cors = require('cors');
+const http = require('http');
+const { Server } = require('socket.io');
 require('dotenv').config();
 const { pool, testConnection } = require('./config/db');
 
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server, {
+    cors: {
+        origin: "*", // On autorise tout le monde pour l'instant (on sécurisera avec React plus tard)
+        methods: ["GET", "POST", "PUT", "DELETE"]
+    }
+});
+app.set('io', io);
 
 // Middleware
 app.use(cors());
@@ -30,7 +40,7 @@ app.use('/api/interactions', interactionsRoutes);
 const PORT = process.env.PORT || 5000;
 
 // Démarrage du serveur et test de la base de données
-app.listen(PORT, async () => {
+server.listen(PORT, async () => {
     console.log(`\n========================================`);
     console.log(`🚀 Serveur démarré sur le port ${PORT}`);
     console.log(`========================================`);
