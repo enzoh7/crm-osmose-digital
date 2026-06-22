@@ -15,6 +15,12 @@ const createEntreprise = async (req, res) => {
             [nom, interlocuteur || null, email || null, telephone || null, statut || 'À contacter', userId]
         );
 
+        const io = req.app.get('io');
+        io.emit('nouvelle_entreprise', { 
+            message: "Un nouveau client a été ajouté !",
+            entrepriseId: result.insertId 
+        });
+
         res.status(201).json({ 
             message: "Entreprise ajoutée avec succès !", 
             entrepriseId: result.insertId 

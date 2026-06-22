@@ -13,6 +13,12 @@ const createInteraction = async (req, res) => {
             [entreprise_id, notes]
         );
 
+        const io = req.app.get('io');
+        io.emit('nouvelle_interaction', { 
+            message: "Une nouvelle interaction a été ajoutée",
+            entrepriseId: entreprise_id 
+        });
+
         res.status(201).json({ 
             message: "Interaction ajoutée avec succès",
             interactionId: result.insertId 
