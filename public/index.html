@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Osmose Digital</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Osmose Digital</h1>
+            <p style="color: var(--textMuted); margin-bottom: 20px;">Connexion au CRM</p>
+            
+            <form id="login-form">
+                <input type="email" id="email" class="input-field" placeholder="Email" required>
+                <input type="password" id="password" class="input-field" placeholder="Mot de passe" required>
+                <div id="error-msg" style="color: #e07070; font-size: 12px; margin-bottom: 10px;"></div>
+                <button type="submit" class="btn-primary" style="width: 100%;">Se connecter</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="/js/api.js"></script>
+    <script src="/js/login.js"></script>
+</body>
+</html>

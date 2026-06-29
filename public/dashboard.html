@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Osmose Digital</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <h2 class="sidebar-title">📋 Suivi Relance</h2>
+            <button class="btn-primary" id="btn-logout" style="margin-top: auto; background: transparent; border: 1px solid var(--border); color: var(--text);">Déconnexion</button>
+        </aside>
+        
+        <main class="main-content">
+            <header class="topbar">
+                <h2>Mes Entreprises</h2>
+                <button class="btn-primary">+ Nouvelle entreprise</button>
+            </header>
+            
+            <section class="content-area" id="companies-container">
+                <!-- Les cartes seront injectées ici par Javascript -->
+                <p style="color: var(--textMuted);">Chargement des données...</p>
+            </section>
+        </main>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>
